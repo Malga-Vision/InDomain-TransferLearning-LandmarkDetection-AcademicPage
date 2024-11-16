@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="The paper systematically analyzes whether small-scale in-domain x-ray image datasets enhance landmark detection compared to pretraining on natural image datasets like ImageNet, concluding that in-domain data provides minimal benefit, and ImageNet pretraining is effective for diverse x-ray domains.">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="Landmark detection, Transfer Learning, Label Efficient, ImageNet, X-rays">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>IS IN-DOMAIN DATA BENEFICIAL IN TRANSFER LEARNING FOR LANDMARKS
+    DETECTION IN X-RAY IMAGES?</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title" style="font-size: 36px;">
+              IS IN-DOMAIN DATA BENEFICIAL IN TRANSFER LEARNING FOR LANDMARKS DETECTION IN X-RAY IMAGES?</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=qGS6cv4AAAAJ=en" target="_blank">Roberto Di Via</a>,</span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?hl=it&user=iVlCw_gAAAAJ=en" target="_blank">Matteo Santacesaria</a>,</span>
+                  <span class="author-block">
+                    <a href="https://scholar.google.com/citations?user=riK7DscAAAAJ&hl=en" target="_blank">Francesca Odone</a>,</span>
+                    <span class="author-block">
+                      <a href="https://scholar.google.com/citations?user=-boYCXcAAAAJ&hl=en" target="_blank">Vito Paolo Pastore</a></span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block">MaLGa Center, DIBRIS/DIMA, University of Genoa<br>21st IEEE International Symposium on Biomedical Imaging (ISBI 2024)</span>
+                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- Arxiv PDF link -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/abs/2403.01470" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2403.01470" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      
+      <image src="static/images/xrays.png" alt="Landmarks on the three datasets" style="width:100%">
+
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            In recent years, deep learning has emerged as a promising
+            technique for medical image analysis. However, this application domain is likely to suffer from a limited availability
+            of large public datasets and annotations. A common solution to these challenges in deep learning is the usage of a
+            transfer learning framework, typically with a fine-tuning protocol, where a large-scale source dataset is used to pre-train a
+            model, further fine-tuned on the target dataset. In this paper,
+            we present a <b>systematic study analyzing whether the usage of
+            small-scale in-domain x-ray image datasets may provide any
+            improvement for landmark detection over models pre-trained
+            on large natural image datasets only.</b> We focus on the multilandmark localization task for three datasets, including chest,
+            head, and hand x-ray images. Our results show that using
+            in-domain source datasets brings marginal or no benefit with
+            respect to an ImageNet out-of-domain pre-training. Our findings can provide an indication for the development of robust
+            landmark detection systems in medical images when no large
+            annotated dataset is available.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Introduction + Pipeline-->
+<section class="section hero is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Introduction</h2>
+          <div class="content has-text-justified">
+            <p>
+              The paper addresses the challenge of automated landmark detection in medical x-ray images, a critical step for tasks like surgical planning. Due to the limited availability of large annotated medical datasets, transfer learning is commonly used, typically pretraining models on large datasets like ImageNet. However, it is unclear if small-scale in-domain x-ray datasets can enhance performance over natural image pretraining.
+
+              We propose a deep learning pipeline using a U-Net++ architecture with an ImageNet-pretrained VGG19 encoder. The pipeline generates Gaussian heatmaps as ground truth labels for landmarks, and these are used to train the model with augmented x-ray images from chest, head, and hand datasets. The study systematically evaluates whether in-domain fine-tuning improves upon ImageNet pretraining by testing various transfer learning configurations across the datasets.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <img src="static/images/proposed_pipel.png" alt="Our pipeline" style="width:100%">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Introduction + Pipeline-->
+<section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-4">The Effect of In-Domain Fine-Tuning on X-Ray Landmark Detection <br>&<br> Comparison with the State-of-the-Art</h2>
+          <div class="content has-text-justified">
+            <p>
+              The study investigates whether fine-tuning ImageNet-pretrained models on small-scale in-domain x-ray datasets improves performance. Results (Table 2) show that in-domain fine-tuning typically provides minimal or no benefit. In some cases, such as for the head dataset, fine-tuning on another x-ray dataset (e.g., chest) before the target dataset yielded slight improvements. However, for other datasets, in-domain fine-tuning occasionally degraded performance. These findings suggest that ImageNet-pretrained features transfer effectively to x-ray tasks without requiring additional in-domain data, making it the preferred approach for landmark detection in medical imaging.
+              <br><br>
+              The proposed pipeline is benchmarked against state-of-the-art methods on chest, head, and hand x-ray datasets (Table 3). It achieves competitive or superior performance across datasets, attaining the lowest Mean Radial Error (MRE) and highest Success Detection Rate (SDR) at clinically important thresholds. For example, the pipeline improves MRE by 25% on chest x-rays compared to prior work and achieves the best SDR for head and hand datasets at 2mm thresholds. These results highlight the robustness and accuracy of the proposed approach for anatomical landmark detection.
+            
+            </p>
+            <img src="static/images/tables.png" alt="results" style="width:100%">
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX Citation</h2>
+      <pre><code>
+        @inproceedings{DiViaISBI2024,
+          author       = {Roberto Di Via and
+                          Matteo Santacesaria and
+                          Francesca Odone and
+                          Vito Paolo Pastore},
+          title        = {Is In-Domain Data Beneficial in Transfer Learning for Landmarks Detection
+                          in X-Ray Images?},
+          booktitle    = {{IEEE} International Symposium on Biomedical Imaging, {ISBI} 2024,
+                          Athens, Greece, May 27-30, 2024},
+          pages        = {1--5},
+          publisher    = {{IEEE}},
+          year         = {2024},
+          url          = {https://doi.org/10.1109/ISBI56570.2024.10635861},
+          doi          = {10.1109/ISBI56570.2024.10635861},
+        }
+      </code></pre>
+      <h2 class="title">APA Citation</h2>
+      <pre><code>
+        Di Via, R., Santacesaria, M., Odone, F., & Pastore, V. P. (2024). Is in-domain data beneficial in transfer learning for landmarks detection in x-ray images? ArXiv. https://arxiv.org/abs/2403.01470      </code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
