@@ -1,0 +1,27 @@
+# Is In-Domain Data Beneficial in Transfer Learning for Landmarks Detection in X-Ray Images? (ISBI 2024)
+
+> Roberto Di Via, Matteo Santacesaria, Francesca Odone, Vito Paolo Pastore (MaLGa Center, DIBRIS and DIMA, University of Genoa). 2024 IEEE International Symposium on Biomedical Imaging (ISBI), Athens, Greece, pp. 1-5. DOI 10.1109/ISBI56570.2024.10635861.
+
+A systematic study of whether fine-tuning an ImageNet-pretrained model on small-scale in-domain X-ray datasets (one or two intermediate stages) improves anatomical landmark detection over ImageNet pretraining alone. The pipeline is a U-Net++ with an ImageNet-pretrained VGG19 encoder trained on Gaussian landmark heatmaps, evaluated on three public X-ray datasets: Chest (279 images, 6 landmarks), Head (400 cephalograms, 19 landmarks) and Hand (909 images, 37 landmarks).
+
+Key results:
+- In-domain fine-tuning brings marginal or no benefit over ImageNet pretraining; the only gain is on Head after an intermediate Chest stage (MRE 1.45 vs 1.50 mm, +1.60% SDR at 2 mm), and in some cases (Hand SDR at 10 mm) it hurts.
+- Backbone selection (5-fold CV on Hand): U-Net++/VGG19 reaches 0.50 mm MRE and 98.90% SDR at 2 mm.
+- State of the art with ImageNet pretraining only: Chest MRE 4.19 px (25% better than Zhu et al.), Head MRE 1.50 mm (10% better than Lindner et al.), Hand MRE 0.65 mm with SDR 96.90% at 2 mm and 99.84% at 4 mm.
+
+## Links
+- [Paper (arXiv PDF)](https://arxiv.org/pdf/2403.01470)
+- [arXiv abstract](https://arxiv.org/abs/2403.01470)
+- [IEEE (DOI)](https://doi.org/10.1109/ISBI56570.2024.10635861)
+- [Project page](https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/)
+
+## Citation
+@inproceedings{DiViaISBI2024,
+  author    = {Roberto Di Via and Matteo Santacesaria and Francesca Odone and Vito Paolo Pastore},
+  title     = {Is In-Domain Data Beneficial in Transfer Learning for Landmarks Detection in X-Ray Images?},
+  booktitle = {{IEEE} International Symposium on Biomedical Imaging, {ISBI} 2024, Athens, Greece, May 27-30, 2024},
+  pages     = {1--5},
+  publisher = {{IEEE}},
+  year      = {2024},
+  doi       = {10.1109/ISBI56570.2024.10635861}
+}

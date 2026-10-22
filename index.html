@@ -1,19 +1,214 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="The paper systematically analyzes whether small-scale in-domain x-ray image datasets enhance landmark detection compared to pretraining on natural image datasets like ImageNet, concluding that in-domain data provides minimal benefit, and ImageNet pretraining is effective for diverse x-ray domains.">
-  <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="Landmark detection, Transfer Learning, Label Efficient, ImageNet, X-rays">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <title>In-Domain Transfer Learning for X-Ray Landmark Detection (ISBI 2024)</title>
+  <meta name="description" content="ISBI 2024: small in-domain X-ray datasets give marginal or no gain over ImageNet pretraining for landmark detection; U-Net++/VGG19 reaches 0.65 mm MRE on hand.">
+  <meta name="keywords" content="anatomical landmark detection, transfer learning, in-domain pretraining, ImageNet, U-Net++, VGG19, X-ray, cephalometric, chest X-ray, hand X-ray, ISBI 2024">
+  <meta name="author" content="Roberto Di Via, Matteo Santacesaria, Francesca Odone, Vito Paolo Pastore">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/">
 
-  <title>IS IN-DOMAIN DATA BENEFICIAL IN TRANSFER LEARNING FOR LANDMARKS
-    DETECTION IN X-RAY IMAGES?</title>
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="In-Domain Transfer Learning for Landmark Detection (ISBI 2024)">
+  <meta property="og:title" content="Is In-Domain Data Beneficial in Transfer Learning for Landmarks Detection in X-Ray Images?">
+  <meta property="og:description" content="ISBI 2024: small in-domain X-ray datasets give marginal or no gain over ImageNet pretraining for landmark detection; U-Net++/VGG19 reaches 0.65 mm MRE on hand.">
+  <meta property="og:url" content="https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/">
+  <meta property="og:image" content="https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/static/images/social_card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Pipeline: Gaussian heatmap ground truth, U-Net++ with ImageNet-pretrained VGG19 encoder, optional in-domain X-ray fine-tuning, predicted landmarks">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="In-Domain Transfer Learning for X-Ray Landmark Detection (ISBI 2024)">
+  <meta name="twitter:description" content="ISBI 2024: small in-domain X-ray datasets give marginal or no gain over ImageNet pretraining for landmark detection; U-Net++/VGG19 reaches 0.65 mm MRE on hand.">
+  <meta name="twitter:image" content="https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/static/images/social_card.jpg">
+
+  <!-- Google Scholar -->
+  <meta name="citation_title" content="Is In-Domain Data Beneficial in Transfer Learning for Landmarks Detection in X-Ray Images?">
+  <meta name="citation_author" content="Di Via, Roberto">
+  <meta name="citation_author" content="Santacesaria, Matteo">
+  <meta name="citation_author" content="Odone, Francesca">
+  <meta name="citation_author" content="Pastore, Vito Paolo">
+  <meta name="citation_publication_date" content="2024/05/27">
+  <meta name="citation_conference_title" content="2024 IEEE International Symposium on Biomedical Imaging (ISBI)">
+  <meta name="citation_publisher" content="IEEE">
+  <meta name="citation_firstpage" content="1">
+  <meta name="citation_lastpage" content="5">
+  <meta name="citation_doi" content="10.1109/ISBI56570.2024.10635861">
+  <meta name="citation_arxiv_id" content="2403.01470">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2403.01470">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ScholarlyArticle",
+      "@id": "https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/#article",
+      "headline": "Is In-Domain Data Beneficial in Transfer Learning for Landmarks Detection in X-Ray Images?",
+      "name": "Is In-Domain Data Beneficial in Transfer Learning for Landmarks Detection in X-Ray Images?",
+      "abstract": "In recent years, deep learning has emerged as a promising technique for medical image analysis. However, this application domain is likely to suffer from a limited availability of large public datasets and annotations. A common solution to these challenges in deep learning is the usage of a transfer learning framework, typically with a fine-tuning protocol, where a large-scale source dataset is used to pre-train a model, further fine-tuned on the target dataset. In this paper, we present a systematic study analyzing whether the usage of small-scale in-domain x-ray image datasets may provide any improvement for landmark detection over models pre-trained on large natural image datasets only. We focus on the multi-landmark localization task for three datasets, including chest, head, and hand x-ray images. Our results show that using in-domain source datasets brings marginal or no benefit with respect to an ImageNet out-of-domain pre-training. Our findings can provide an indication for the development of robust landmark detection systems in medical images when no large annotated dataset is available.",
+      "description": "ISBI 2024: small in-domain X-ray datasets give marginal or no gain over ImageNet pretraining for landmark detection; U-Net++/VGG19 reaches 0.65 mm MRE on hand.",
+      "author": [
+        {
+          "@type": "Person",
+          "name": "Roberto Di Via",
+          "sameAs": "https://scholar.google.com/citations?user=qGS6cv4AAAAJ",
+          "affiliation": {
+            "@id": "https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/#dibris"
+          }
+        },
+        {
+          "@type": "Person",
+          "name": "Matteo Santacesaria",
+          "sameAs": "https://scholar.google.com/citations?user=iVlCw_gAAAAJ",
+          "affiliation": {
+            "@id": "https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/#dima"
+          }
+        },
+        {
+          "@type": "Person",
+          "name": "Francesca Odone",
+          "sameAs": "https://scholar.google.com/citations?user=riK7DscAAAAJ",
+          "affiliation": {
+            "@id": "https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/#dibris"
+          }
+        },
+        {
+          "@type": "Person",
+          "name": "Vito Paolo Pastore",
+          "sameAs": "https://scholar.google.com/citations?user=-boYCXcAAAAJ",
+          "affiliation": {
+            "@id": "https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/#dibris"
+          }
+        }
+      ],
+      "datePublished": "2024-05-27",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": [
+        "anatomical landmark detection",
+        "transfer learning",
+        "in-domain pretraining",
+        "ImageNet",
+        "U-Net++",
+        "X-ray imaging",
+        "ISBI 2024"
+      ],
+      "image": "https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/static/images/social_card.jpg",
+      "url": "https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/",
+      "mainEntityOfPage": "https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/",
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "DOI",
+          "value": "10.1109/ISBI56570.2024.10635861"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "arXiv",
+          "value": "2403.01470"
+        }
+      ],
+      "sameAs": [
+        "https://doi.org/10.1109/ISBI56570.2024.10635861",
+        "https://arxiv.org/abs/2403.01470"
+      ],
+      "encoding": {
+        "@type": "MediaObject",
+        "contentUrl": "https://arxiv.org/pdf/2403.01470",
+        "encodingFormat": "application/pdf"
+      },
+      "pagination": "1-5",
+      "isPartOf": {
+        "@type": "Book",
+        "name": "2024 IEEE International Symposium on Biomedical Imaging (ISBI)",
+        "publisher": {
+          "@type": "Organization",
+          "name": "IEEE"
+        }
+      },
+      "publication": {
+        "@type": "PublicationEvent",
+        "name": "IEEE ISBI 2024",
+        "startDate": "2024-05-27",
+        "endDate": "2024-05-30",
+        "location": {
+          "@type": "Place",
+          "name": "Athens, Greece"
+        }
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/#dibris",
+      "name": "MaLGa Center, DIBRIS, University of Genoa",
+      "url": "https://malga.unige.it/"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/#dima",
+      "name": "MaLGa Center, DIMA, University of Genoa",
+      "url": "https://malga.unige.it/"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does this ISBI 2024 paper study?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The paper \"Is In-Domain Data Beneficial in Transfer Learning for Landmarks Detection in X-Ray Images?\" (IEEE ISBI 2024) is a systematic study of whether fine-tuning an ImageNet-pretrained model on small-scale in-domain X-ray datasets, before fine-tuning on the target dataset, improves anatomical landmark detection over ImageNet pretraining alone. It evaluates all one-stage and two-stage transfer combinations between chest, head and hand X-ray datasets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which datasets are used?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three public X-ray benchmarks, with the splits of Zhu et al. (GU2Net): Chest, 279 images from the China (Shenzhen) set with 6 landmarks (229 train / 50 test); Head, 400 cephalometric images with 19 landmarks (150 train / 250 test); Hand, 909 images with 37 landmarks (609 train / 300 test)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is in-domain data beneficial for X-ray landmark detection?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Marginally at best. Fine-tuning the ImageNet-pretrained model on small in-domain X-ray datasets generally gives no significant gain. The only improvement is on the head dataset after an intermediate chest stage: MRE 1.45 mm vs. 1.50 mm and +1.60% SDR at 2 mm. In some cases, such as SDR at 10 mm on hand X-rays, in-domain fine-tuning reduces performance. The paper concludes that ImageNet pretraining should be the primary transfer learning approach."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What model does the pipeline use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A U-Net++ with an ImageNet-pretrained VGG19 encoder, trained to regress one Gaussian heatmap per landmark. It was selected by 5-fold cross-validation on the hand dataset against U-Net and DeepLabV3 with EfficientNet-B7, ResNeXt101 and VGG19 backbones, reaching 0.50 mm MRE and 98.90% SDR at 2 mm."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does it compare with the state of the art?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With ImageNet pretraining only, the U-Net++/VGG19 pipeline obtains the lowest MRE on all three datasets: 4.19 px on chest (25% better than Zhu et al.), 1.50 mm on head (10% better than Lindner et al.) and 0.65 mm on hand, with the highest SDRs of 96.90% at 2 mm and 99.84% at 4 mm on hand."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro&display=swap"
   rel="stylesheet">
 
   <link rel="stylesheet" href="static/css/bulma.min.css">
@@ -25,7 +220,6 @@
   <link rel="stylesheet" href="static/css/index.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
@@ -44,9 +238,9 @@
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=qGS6cv4AAAAJ=en" target="_blank">Roberto Di Via</a>,</span>
+                <a href="https://scholar.google.com/citations?user=qGS6cv4AAAAJ&hl=en" target="_blank">Roberto Di Via</a>,</span>
                 <span class="author-block">
-                  <a href="https://scholar.google.com/citations?hl=it&user=iVlCw_gAAAAJ=en" target="_blank">Matteo Santacesaria</a>,</span>
+                  <a href="https://scholar.google.com/citations?user=iVlCw_gAAAAJ&hl=en" target="_blank">Matteo Santacesaria</a>,</span>
                   <span class="author-block">
                     <a href="https://scholar.google.com/citations?user=riK7DscAAAAJ&hl=en" target="_blank">Francesca Odone</a>,</span>
                     <span class="author-block">
@@ -95,7 +289,7 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       
-      <image src="static/images/xrays.png" alt="Landmarks on the three datasets" style="width:100%">
+      <img src="static/images/xrays.png" alt="Annotated anatomical landmarks (yellow dots) on example chest, head (cephalometric) and hand X-ray images from the three benchmark datasets" width="1847" height="520" style="width:100%;height:auto">
 
     </div>
   </div>
@@ -151,7 +345,7 @@
       </div>
       <div class="columns is-centered">
         <div class="column">
-          <img src="static/images/proposed_pipel.png" alt="Our pipeline" style="width:100%">
+          <img src="static/images/proposed_pipel_web.jpg" alt="Pipeline: landmark annotations become Gaussian heatmap ground truth; a U-Net++ with an ImageNet-pretrained VGG19 encoder, optionally fine-tuned on an in-domain X-ray dataset, predicts the landmarks" width="1600" height="1187" loading="lazy" style="width:100%;height:auto">
         </div>
       </div>
     </div>
@@ -173,7 +367,7 @@
               The proposed pipeline is benchmarked against state-of-the-art methods on chest, head, and hand x-ray datasets (Table 3). It achieves competitive or superior performance across datasets, attaining the lowest Mean Radial Error (MRE) and highest Success Detection Rate (SDR) at clinically important thresholds. For example, the pipeline improves MRE by 25% on chest x-rays compared to prior work and achieves the best SDR for head and hand datasets at 2mm thresholds. These results highlight the robustness and accuracy of the proposed approach for anatomical landmark detection.
             
             </p>
-            <img src="static/images/tables.png" alt="results" style="width:100%">
+            <img src="static/images/tables.png" alt="Table 2: in-domain transfer learning strategies versus ImageNet baseline, and Table 3: comparison with state-of-the-art methods on chest, head and hand X-ray datasets (MRE and SDR)" width="1536" height="643" loading="lazy" style="width:100%;height:auto">
           </div>
         </div>
       </div>
@@ -184,30 +378,79 @@
 </section>
 
 
+<!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Frequently asked questions</h2>
+          <h3 class="title is-5" style="margin-top:1.2rem;">What does this ISBI 2024 paper study?</h3>
+          <p>The paper "Is In-Domain Data Beneficial in Transfer Learning for Landmarks Detection in X-Ray Images?" (IEEE ISBI 2024) is a systematic study of whether fine-tuning an ImageNet-pretrained model on small-scale in-domain X-ray datasets, before fine-tuning on the target dataset, improves anatomical landmark detection over ImageNet pretraining alone. It evaluates all one-stage and two-stage transfer combinations between chest, head and hand X-ray datasets.</p>
+          <h3 class="title is-5" style="margin-top:1.2rem;">Which datasets are used?</h3>
+          <p>Three public X-ray benchmarks, with the splits of Zhu et al. (GU2Net): Chest, 279 images from the China (Shenzhen) set with 6 landmarks (229 train / 50 test); Head, 400 cephalometric images with 19 landmarks (150 train / 250 test); Hand, 909 images with 37 landmarks (609 train / 300 test).</p>
+          <h3 class="title is-5" style="margin-top:1.2rem;">Is in-domain data beneficial for X-ray landmark detection?</h3>
+          <p>Marginally at best. Fine-tuning the ImageNet-pretrained model on small in-domain X-ray datasets generally gives no significant gain. The only improvement is on the head dataset after an intermediate chest stage: MRE 1.45 mm vs. 1.50 mm and +1.60% SDR at 2 mm. In some cases, such as SDR at 10 mm on hand X-rays, in-domain fine-tuning reduces performance. The paper concludes that ImageNet pretraining should be the primary transfer learning approach.</p>
+          <h3 class="title is-5" style="margin-top:1.2rem;">What model does the pipeline use?</h3>
+          <p>A U-Net++ with an ImageNet-pretrained VGG19 encoder, trained to regress one Gaussian heatmap per landmark. It was selected by 5-fold cross-validation on the hand dataset against U-Net and DeepLabV3 with EfficientNet-B7, ResNeXt101 and VGG19 backbones, reaching 0.50 mm MRE and 98.90% SDR at 2 mm.</p>
+          <h3 class="title is-5" style="margin-top:1.2rem;">How does it compare with the state of the art?</h3>
+          <p>With ImageNet pretraining only, the U-Net++/VGG19 pipeline obtains the lowest MRE on all three datasets: 4.19 px on chest (25% better than Zhu et al.), 1.50 mm on head (10% better than Lindner et al.) and 0.65 mm on hand, with the highest SDRs of 96.90% at 2 mm and 99.84% at 4 mm on hand.</p>
+    </div>
+  </section>
+
+  <!-- Related work -->
+  <section class="section hero is-light" id="related">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Related work from our lab</h2>
+      <ul>
+        <li>
+          <b>PACER</b>: Curriculum Self-Training with Spatial Uncertainty for Pseudo-Label Selection in Few-Shot Anatomical Landmark Detection. <i>WACV 2027</i>.
+          [<a href="https://malga-vision.github.io/PACER-wacv27-AcademicPage/">Project page</a>]
+          [<a href="https://github.com/Malga-Vision/PACER-wacv27">Code</a>]
+        </li>
+        <li>
+          <b>CDPM-Align</b>: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection. <i>MICCAI 2026</i>.
+          [<a href="https://malga-vision.github.io/CDPM-Align_AcademicPage/">Project page</a>]
+          [<a href="https://github.com/Malga-Vision/CDPM-Align">Code</a>]
+        </li>
+        <li>
+          Automated Landmark Detection for Assessing Hip Conditions: A Cross-Modality Validation of MRI versus X-ray. <i>ISBI 2026</i>.
+          [<a href="https://malga-vision.github.io/Landmarks-Hip-Conditions-AcademicPage/">Project page</a>]
+        </li>
+        <li>
+          <b>Diffusing DeBias</b>: Synthetic Bias Amplification for Model Debiasing. <i>NeurIPS 2025</i>.
+          [<a href="https://malga-vision.github.io/DiffusingDeBias-AcademicPage/">Project page</a>]
+        </li>
+        <li>
+          Are X-ray Landmark Detection Models Fair? A Preliminary Assessment and Mitigation Strategy. <i>ICCV 2025 Workshop</i>.
+          [<a href="https://malga-vision.github.io/FairerXRay-LandmarkDetection-AcademicPage/">Project page</a>]
+        </li>
+        <li>
+          Self-Supervised Pre-Training with Diffusion Model for Few-Shot Landmark Detection in X-Ray Images. <i>WACV 2025</i>.
+          [<a href="https://malga-vision.github.io/DiffusionXray-FewShot-LandmarkDetection-AcademicPage/">Project page</a>]
+        </li>
+      </ul>
+    </div>
+  </section>
+
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX Citation</h2>
-      <pre><code>
-        @inproceedings{DiViaISBI2024,
-          author       = {Roberto Di Via and
-                          Matteo Santacesaria and
-                          Francesca Odone and
-                          Vito Paolo Pastore},
-          title        = {Is In-Domain Data Beneficial in Transfer Learning for Landmarks Detection
-                          in X-Ray Images?},
-          booktitle    = {{IEEE} International Symposium on Biomedical Imaging, {ISBI} 2024,
-                          Athens, Greece, May 27-30, 2024},
-          pages        = {1--5},
-          publisher    = {{IEEE}},
-          year         = {2024},
-          url          = {https://doi.org/10.1109/ISBI56570.2024.10635861},
-          doi          = {10.1109/ISBI56570.2024.10635861},
-        }
-      </code></pre>
+      <pre><code>@inproceedings{DiViaISBI2024,
+  author       = {Roberto Di Via and
+                  Matteo Santacesaria and
+                  Francesca Odone and
+                  Vito Paolo Pastore},
+  title        = {Is In-Domain Data Beneficial in Transfer Learning for Landmarks Detection
+                  in X-Ray Images?},
+  booktitle    = {{IEEE} International Symposium on Biomedical Imaging, {ISBI} 2024,
+                  Athens, Greece, May 27-30, 2024},
+  pages        = {1--5},
+  publisher    = {{IEEE}},
+  year         = {2024},
+  url          = {https://doi.org/10.1109/ISBI56570.2024.10635861},
+  doi          = {10.1109/ISBI56570.2024.10635861},
+}</code></pre>
       <h2 class="title">APA Citation</h2>
-      <pre><code>
-        Di Via, R., Santacesaria, M., Odone, F., & Pastore, V. P. (2024). Is in-domain data beneficial in transfer learning for landmarks detection in x-ray images? ArXiv. https://arxiv.org/abs/2403.01470      </code></pre>
+      <pre><code>Di Via, R., Santacesaria, M., Odone, F., & Pastore, V. P. (2024). Is in-domain data beneficial in transfer learning for landmarks detection in x-ray images? In 2024 IEEE International Symposium on Biomedical Imaging (ISBI) (pp. 1-5). IEEE. https://doi.org/10.1109/ISBI56570.2024.10635861</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
