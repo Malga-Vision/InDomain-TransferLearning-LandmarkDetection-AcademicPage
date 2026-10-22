@@ -5,7 +5,7 @@
 A systematic study of whether fine-tuning an ImageNet-pretrained model on small-scale in-domain X-ray datasets (one or two intermediate stages) improves anatomical landmark detection over ImageNet pretraining alone. The pipeline is a U-Net++ with an ImageNet-pretrained VGG19 encoder trained on Gaussian landmark heatmaps, evaluated on three public X-ray datasets: Chest (279 images, 6 landmarks), Head (400 cephalograms, 19 landmarks) and Hand (909 images, 37 landmarks).
 
 Key results:
-- In-domain fine-tuning brings marginal or no benefit over ImageNet pretraining; the only gain is on Head after an intermediate Chest stage (MRE 1.45 vs 1.50 mm, +1.60% SDR at 2 mm), and in some cases (Hand SDR at 10 mm) it hurts.
+- In-domain fine-tuning brings marginal or no benefit over ImageNet pretraining; the main exception is Head after an intermediate Chest stage (MRE 1.45 vs 1.50 mm, +1.60% SDR at 2 mm), and in some cases (Hand SDR at 10 mm) it hurts.
 - Backbone selection (5-fold CV on Hand): U-Net++/VGG19 reaches 0.50 mm MRE and 98.90% SDR at 2 mm.
 - State of the art with ImageNet pretraining only: Chest MRE 4.19 px (25% better than Zhu et al.), Head MRE 1.50 mm (10% better than Lindner et al.), Hand MRE 0.65 mm with SDR 96.90% at 2 mm and 99.84% at 4 mm.
 

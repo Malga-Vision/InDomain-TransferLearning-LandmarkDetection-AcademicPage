@@ -181,7 +181,7 @@
           "name": "Is in-domain data beneficial for X-ray landmark detection?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Marginally at best. Fine-tuning the ImageNet-pretrained model on small in-domain X-ray datasets generally gives no significant gain. The only improvement is on the head dataset after an intermediate chest stage: MRE 1.45 mm vs. 1.50 mm and +1.60% SDR at 2 mm. In some cases, such as SDR at 10 mm on hand X-rays, in-domain fine-tuning reduces performance. The paper concludes that ImageNet pretraining should be the primary transfer learning approach."
+            "text": "Marginally at best. Fine-tuning the ImageNet-pretrained model on small in-domain X-ray datasets generally gives no significant gain. The main exception is the head dataset after an intermediate chest stage: MRE 1.45 mm vs. 1.50 mm and +1.60% SDR at 2 mm. In some cases, such as SDR at 10 mm on hand X-rays, in-domain fine-tuning reduces performance. The paper concludes that ImageNet pretraining should be the primary transfer learning approach."
           }
         },
         {
@@ -189,7 +189,7 @@
           "name": "What model does the pipeline use?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A U-Net++ with an ImageNet-pretrained VGG19 encoder, trained to regress one Gaussian heatmap per landmark. It was selected by 5-fold cross-validation on the hand dataset against U-Net and DeepLabV3 with EfficientNet-B7, ResNeXt101 and VGG19 backbones, reaching 0.50 mm MRE and 98.90% SDR at 2 mm."
+            "text": "A U-Net++ with an ImageNet-pretrained VGG19 encoder, trained to regress one Gaussian heatmap per landmark. It was selected by 5-fold cross-validation on the hand dataset against U-Net and DeepLabV3 with EfficientNet-B7, ResNeXt101 and VGG19 backbones (VGG19 is not supported by DeepLabV3), reaching 0.50 mm MRE and 98.90% SDR at 2 mm."
           }
         },
         {
@@ -312,7 +312,7 @@
             we present a <b>systematic study analyzing whether the usage of
             small-scale in-domain x-ray image datasets may provide any
             improvement for landmark detection over models pre-trained
-            on large natural image datasets only.</b> We focus on the multilandmark localization task for three datasets, including chest,
+            on large natural image datasets only.</b> We focus on the multi-landmark localization task for three datasets, including chest,
             head, and hand x-ray images. Our results show that using
             in-domain source datasets brings marginal or no benefit with
             respect to an ImageNet out-of-domain pre-training. Our findings can provide an indication for the development of robust
@@ -364,7 +364,7 @@
             <p>
               The study investigates whether fine-tuning ImageNet-pretrained models on small-scale in-domain x-ray datasets improves performance. Results (Table 2) show that in-domain fine-tuning typically provides minimal or no benefit. In some cases, such as for the head dataset, fine-tuning on another x-ray dataset (e.g., chest) before the target dataset yielded slight improvements. However, for other datasets, in-domain fine-tuning occasionally degraded performance. These findings suggest that ImageNet-pretrained features transfer effectively to x-ray tasks without requiring additional in-domain data, making it the preferred approach for landmark detection in medical imaging.
               <br><br>
-              The proposed pipeline is benchmarked against state-of-the-art methods on chest, head, and hand x-ray datasets (Table 3). It achieves competitive or superior performance across datasets, attaining the lowest Mean Radial Error (MRE) and highest Success Detection Rate (SDR) at clinically important thresholds. For example, the pipeline improves MRE by 25% on chest x-rays compared to prior work and achieves the best SDR for head and hand datasets at 2mm thresholds. These results highlight the robustness and accuracy of the proposed approach for anatomical landmark detection.
+              The proposed pipeline is benchmarked against state-of-the-art methods on chest, head, and hand x-ray datasets (Table 3). It achieves competitive or superior performance across datasets, attaining the lowest Mean Radial Error (MRE) and highest Success Detection Rate (SDR) at clinically important thresholds. For example, the pipeline improves MRE by 25% on chest x-rays compared to Zhu et al., achieves the highest head SDRs with a 3-7% improvement at 2.5-4mm thresholds, and the highest hand SDRs of 96.90% and 99.84% at the 2mm and 4mm thresholds. These results highlight the robustness and accuracy of the proposed approach for anatomical landmark detection.
             
             </p>
             <img src="static/images/tables.png" alt="Table 2: in-domain transfer learning strategies versus ImageNet baseline, and Table 3: comparison with state-of-the-art methods on chest, head and hand X-ray datasets (MRE and SDR)" width="1536" height="643" loading="lazy" style="width:100%;height:auto">
@@ -387,9 +387,9 @@
           <h3 class="title is-5" style="margin-top:1.2rem;">Which datasets are used?</h3>
           <p>Three public X-ray benchmarks, with the splits of Zhu et al. (GU2Net): Chest, 279 images from the China (Shenzhen) set with 6 landmarks (229 train / 50 test); Head, 400 cephalometric images with 19 landmarks (150 train / 250 test); Hand, 909 images with 37 landmarks (609 train / 300 test).</p>
           <h3 class="title is-5" style="margin-top:1.2rem;">Is in-domain data beneficial for X-ray landmark detection?</h3>
-          <p>Marginally at best. Fine-tuning the ImageNet-pretrained model on small in-domain X-ray datasets generally gives no significant gain. The only improvement is on the head dataset after an intermediate chest stage: MRE 1.45 mm vs. 1.50 mm and +1.60% SDR at 2 mm. In some cases, such as SDR at 10 mm on hand X-rays, in-domain fine-tuning reduces performance. The paper concludes that ImageNet pretraining should be the primary transfer learning approach.</p>
+          <p>Marginally at best. Fine-tuning the ImageNet-pretrained model on small in-domain X-ray datasets generally gives no significant gain. The main exception is the head dataset after an intermediate chest stage: MRE 1.45 mm vs. 1.50 mm and +1.60% SDR at 2 mm. In some cases, such as SDR at 10 mm on hand X-rays, in-domain fine-tuning reduces performance. The paper concludes that ImageNet pretraining should be the primary transfer learning approach.</p>
           <h3 class="title is-5" style="margin-top:1.2rem;">What model does the pipeline use?</h3>
-          <p>A U-Net++ with an ImageNet-pretrained VGG19 encoder, trained to regress one Gaussian heatmap per landmark. It was selected by 5-fold cross-validation on the hand dataset against U-Net and DeepLabV3 with EfficientNet-B7, ResNeXt101 and VGG19 backbones, reaching 0.50 mm MRE and 98.90% SDR at 2 mm.</p>
+          <p>A U-Net++ with an ImageNet-pretrained VGG19 encoder, trained to regress one Gaussian heatmap per landmark. It was selected by 5-fold cross-validation on the hand dataset against U-Net and DeepLabV3 with EfficientNet-B7, ResNeXt101 and VGG19 backbones (VGG19 is not supported by DeepLabV3), reaching 0.50 mm MRE and 98.90% SDR at 2 mm.</p>
           <h3 class="title is-5" style="margin-top:1.2rem;">How does it compare with the state of the art?</h3>
           <p>With ImageNet pretraining only, the U-Net++/VGG19 pipeline obtains the lowest MRE on all three datasets: 4.19 px on chest (25% better than Zhu et al.), 1.50 mm on head (10% better than Lindner et al.) and 0.65 mm on hand, with the highest SDRs of 96.90% at 2 mm and 99.84% at 4 mm on hand.</p>
     </div>
